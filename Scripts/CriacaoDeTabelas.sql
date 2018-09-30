@@ -40,14 +40,12 @@ CREATE TABLE Pessoa(
 --Criando a relação Pagamento
 	CREATE TABLE Pagamento(
 	CodPagamento SERIAL,
-	Valor REAL NOT NULL,
-	Data DATE NOT NULL,
-	Funcionario VARCHAR(20) NOT NULL,
+    Funcionario VARCHAR(20) NOT NULL,
 	Hora TIMESTAMP NOT NULL,
 	CodDespesa INT NOT NULL,
 	CONSTRAINT PKPagamento PRIMARY KEY(CodPagamento),
 	CONSTRAINT FK1Pagamento FOREIGN KEY(CodDespesa) REFERENCES 	Despesa(CodDespesa),
-	CONSTRAINT FK2Pagamento FOREIGN KEY(Funcionario) REFERENCES 	Funcionario(CPFPessoa),
+	CONSTRAINT FK2Pagamento FOREIGN KEY(Funcionario) REFERENCES Funcionario(CPFPessoa),
 	CONSTRAINT ValPositivo CHECK(Valor>0)
 	);
 
