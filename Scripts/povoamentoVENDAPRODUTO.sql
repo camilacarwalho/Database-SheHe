@@ -1,0 +1,7 @@
+
+--Povoando a relação VendaProduto
+INSERT INTO VendaProduto VALUES('1001253', 33, 1, 70.60);
+INSERT INTO VendaProduto VALUES('1001252', 33, 1, 200.00);
+INSERT INTO VendaProduto VALUES('1001251', 34, 1, 100.00);
+INSERT INTO VendaProduto VALUES('1001250', 34, 1, 80.00);
+INSERT INTO VendaProduto VALUES('1001249', 33, 1, 59.90);

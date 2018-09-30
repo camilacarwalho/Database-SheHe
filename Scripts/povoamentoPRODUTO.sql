@@ -1,0 +1,21 @@
+--Povoando a relação Produto
+INSERT INTO Produto VALUES('1001234', 'M', 'Disponível', 'Calça Skinny em Sarja', 59.90);
+INSERT INTO Produto VALUES('1001235', 'M', 'Disponível', 'Camisa Branca Mullet', 45.50);
+INSERT INTO Produto VALUES('1001236', 'GG', 'Indisponível', 'Camisa Estampada com Folhagem', 38.90);
+INSERT INTO Produto VALUES('1001237', 'G', 'Disponível', 'Camisa Estampada com Amarração', 55.90);
+INSERT INTO Produto VALUES('1001238', 'P', 'Disponível', 'Calça Mom Jeans', 75.90);
+INSERT INTO Produto VALUES('1001239', 'Único', 'Disponível', 'Jaqueta de Frio Xadrez', 120.00);
+INSERT INTO Produto VALUES('1001240', 'P', 'Indisponível', 'Cropped Azul Marinho', 35.50);
+INSERT INTO Produto VALUES('1001241', 'PP', 'Disponível', 'Vestido Curto Florido', 65.00);
+INSERT INTO Produto VALUES('1001242', 'GG', 'Disponível', 'Bermuda Jeans', 70.50);
+INSERT INTO Produto VALUES('1001243', 'M', 'Disponível', 'Camisa Xadrez', 69.90);
+INSERT INTO Produto VALUES('1001244', 'G', 'Indisponível', 'Camisa The Smiths', 45.50);
+INSERT INTO Produto VALUES('1001245', 'P', 'Disponível', 'Saia Longa Branca', 60.80);
+INSERT INTO Produto VALUES('1001246', 'PP', 'Disponível', 'Camisa Gola V', 60.00);
+INSERT INTO Produto VALUES('1001247', 'M', 'Disponível', 'Bomber Jacket Nasa', 200.00);
+INSERT INTO Produto VALUES('1001248', 'GG', 'Disponível', 'Saia Colegial', 60.00);
+INSERT INTO Produto VALUES('1001249', 'Único', 'Disponível', 'Bikini Listrado', 59.90);
+INSERT INTO Produto VALUES('1001250', 'M', 'Disponível', 'Blusão Estampado', 80.00);
+INSERT INTO Produto VALUES('1001251', 'PP', 'Disponível', 'Camisa Social Preta', 100.00);
+INSERT INTO Produto VALUES('1001252', 'M', 'Disponível', 'Vestido Longo Preto', 200.00);
+INSERT INTO Produto VALUES('1001253', 'G', 'Disponível', 'Short Cintura Alta', 70.60);
