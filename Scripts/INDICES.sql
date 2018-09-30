@@ -1,0 +1,11 @@
+CREATE INDEX cpfindice ON Pessoa(CPF);
+CREATE INDEX cpfFuncionarioIndice ON Funcionario(CPFPessoa);
+CREATE INDEX cpfClienteIndice ON Cliente(CPFPessoa);
+CREATE INDEX codSalarioIndice ON Salario(CodSalario);
+CREATE INDEX cnpjFornecedorIndice ON Fornecedor(CNPJ);
+CREATE INDEX codigoDespesaIndice ON Despesa(CodDespesa);
+CREATE INDEX codigoCompraIndice ON Compra(CodCompra);
+CREATE INDEX codigoProdutoIndice ON Produto(Codigo);
+CREATE INDEX codigoVendaIndice ON Venda(CodVenda);
+CREATE INDEX codigoEntradaIndice ON Entrada(CodEntrada);
+CREATE INDEX numeroCartaoIndice ON CartaoCredito(Numero);
