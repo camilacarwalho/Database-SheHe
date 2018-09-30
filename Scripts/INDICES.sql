@@ -1,4 +1,4 @@
-CREATE INDEX cpfindice ON Pessoa(CPF);
+CREATE INDEX cpfIndice ON Pessoa(CPF);
 CREATE INDEX cpfFuncionarioIndice ON Funcionario(CPFPessoa);
 CREATE INDEX cpfClienteIndice ON Cliente(CPFPessoa);
 CREATE INDEX codSalarioIndice ON Salario(CodSalario);
