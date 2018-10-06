@@ -24,13 +24,18 @@
 	WHERE VC.CodVenda = V.CodVenda AND V.Cliente = C.CPFPessoa AND VC.NumParcelas >= 2
 
 
---Duas comparações com valores nulos AINDA N
+--Duas comparações com valores nulos OK
+
 --Recuperar nome de todos os clientes que ainda não forneceram seu e-mail
 	SELECT P.Nome AS NomeCliente
 	FROM Cliente C JOIN Pessoa P ON C.CPFPessoa = P.CPF
 	WHERE C.email IS NOT NULL
+--Recuperar funcionários que nunca atenderam nenhuma venda
+	SELECT F.CPFPessoa
+	FROM Funcionario F LEFT JOIN Venda V ON F.CPFPessoa = V.Funcionario
+	WHERE V.CodVenda IS NULL
 
---Duas buscas por substrings FALTA 1
+--Duas buscas por substrings 
 
 -- Recuperar nome de todos os funcionários que começam com a letra T.
 
@@ -38,6 +43,8 @@
 	FROM Funcionario
 	WHERE Nome LIKE ‘T%’
 
+--Recuperar email de clientes que usam o domínio @gmail.com
+	SELECT Email
 --Duas buscas com ordenação OK
 
 -- Recuperar nome e endereço de funcionários que moram na cidade de Cajazeiras.
