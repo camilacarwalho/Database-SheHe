@@ -23,7 +23,7 @@ AS $$
 		SalFun funcionario.SALARIO%TYPE;
 		CPFFun ALIAS FOR $1;
 	BEGIN
-		SELECT INTO SalFun SALARIO FROM Funcionario WHERE CPFFunc = 		CPFPessoa;
+		SELECT INTO SalFun SALARIO FROM Funcionario WHERE CPFFunc = CPFPessoa;
 		IF SalFun < 1000 THEN RETURN 'Salário baixo',
 			ELSE IF SalFunc<2000 THEN RETURN 'Salário Médio',	
 				ELSE RETURN 'Salário Alto';
