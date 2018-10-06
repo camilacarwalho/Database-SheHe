@@ -23,7 +23,7 @@ CREATE TABLE Pessoa(
 --Criando a relação Cliente
 	CREATE TABLE Cliente(
 	CPFPessoa VARCHAR(20),
-	email VARCHAR(100) NOT NULL UNIQUE,
+	email VARCHAR(100) UNIQUE,
 	CONSTRAINT PKCliente PRIMARY KEY(CPFPessoa),
 	CONSTRAINT FKCliente FOREIGN KEY(CPFPessoa) REFERENCES Pessoa(CPF)
 	);
