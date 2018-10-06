@@ -1,9 +1,9 @@
---Duas Junções OK
+--Duas Junções 
 -- Recuperar e-mail dos clientes atendidos por Milena.
 
-	SELECT C.e-mail
+	SELECT C.email
 	FROM Cliente C JOIN Venda V ON C.CPFPessoa = V.Cliente
-	WHERE  V.Funcionario = ‘Milena’
+	WHERE  V.Funcionario = 'Milena'
 
 --Recuperar nome dos clientes que usaram cartão da Visa.
 
@@ -24,7 +24,7 @@
 	WHERE VC.CodVenda = V.CodVenda AND V.Cliente = C.CPFPessoa AND VC.NumParcelas >= 2
 
 
---Duas comparações com valores nulos OK
+--Duas comparações com valores nulos 
 
 --Recuperar nome de todos os clientes que ainda não forneceram seu e-mail
 	SELECT P.Nome AS NomeCliente
@@ -41,23 +41,26 @@
 
 	SELECT Nome
 	FROM Funcionario
-	WHERE Nome LIKE ‘T%’
+	WHERE Nome LIKE 'T%'
 
 --Recuperar email de clientes que usam o domínio @gmail.com
-	SELECT Email
---Duas buscas com ordenação OK
+	SELECT email
+	FROM cliente
+	WHERE email LIKE '%@gmail.com'
+
+--Duas buscas com ordenação 
 
 -- Recuperar nome e endereço de funcionários que moram na cidade de Cajazeiras.
 	SELECT P.Nome, F.Rua, F.Bairro
 	FROM Funcionario F JOIN Pessoa P ON F.CPFPessoa = P.CPF
-	WHERE F.Cidade = ‘Cajazeiras’
+	WHERE F.Cidade = 'Cajazeiras'
 	ORDER BY P.Nome
 
 -- Verificar quais produtos estão disponíveis na loja.
 	
 	SELECT CodProduto, Nome
 	FROM Produto
-	WHERE Status = ‘Disponível’
+	WHERE Status = 'Disponível'
 	ORDER BY Nome
 
 --Recuperar valor de cada produto disponívelse a loja toda declarar desconto de 20%.
@@ -66,7 +69,7 @@
 	FROM Produto
 	ORDER BY Nome
 
---Duas consultas aninhadas OK
+--Duas consultas aninhadas 
 -- Recuperar e-mail e nome de todos os clientes que fizeram mais de uma compra.
 
 	SELECT C.email, P.Nome
@@ -88,23 +91,63 @@
 	GROUP BY VP.CodProduto
 	HAVING Count(*)>=4 AND VP.CodProduto = P.Codigo)
 
---Duas consultas aninhadas correlacionadas AINDA N
+--Duas consultas aninhadas correlacionadas 
 
---Duas consultas com operações de conjunto AINDA N
+--Recuperar nome de funcionários que ainda não receberam pagamento
+	SELECT P.Nome
+	FROM Pessoa P JOIN Funcionario F ON P.CPF = F.CPFPessoa
+	WHERE NOT EXISTS
+	(SELECT * FROM Pagamento PA
+	 WHERE P.CPF = PA.Funcionario)
 
---Duas consultas com funções agregadas FALTA 1
+--Recuperar email de clientes atendidos por funcionários efetivos
+	SELECT c.email
+	FROM Cliente C
+	WHERE EXISTS
+	(SELECT * 
+	 FROM Venda V JOIN Funcionario F ON V.Funcionario = F.CPFPessoa
+	 WHERE F.Status = 'Efetivo')
+
+--Duas consultas com operações de conjunto  
+--Recuperar produtos disponíveis tanto em tamanho P quanto em tamanho G
+	(SELECT Codigo, Nome
+	FROM Produto
+	WHERE Status = 'Disponível' AND Tamanho = 'P')
+	INTERSECT
+	(SELECT Codigo, Nome
+	FROM Produto
+	WHERE Status = 'Disponível' AND Tamanho = 'G')
+
+--Recuperar código de despesas que não provém de compras
+	(SELECT CodDespesa
+	FROM Despesa)
+	EXCEPT
+	(SELECT CodigoDespesa
+	FROM Despesa NATURAL JOIN Compra)
+
+
+--Duas consultas com funções agregadas 
 -- Verificar o lucro de vendas entre 2018-08-11 até 2018-08-20.
 
 	SELECT SUM(Valor) as Lucro
 	FROM  Entrada
-	WHERE Data >= ‘2018-08-11’ AND Data <= ‘2018-08-20’
+	WHERE Data >= '2018-08-11' AND Data <= '2018-08-20'
+
+-- Verificar o prejuízo com despesas entre 2018-07-30 e 2018-08-30
+	SELECT SUM(Valor) as Prejuíjo
+	FROM Despesa
+	WHERE Data >= '2018-07-30' AND Data <= '2018-08-30'
 
 
-
---Duas consultas com agrupamento, uma com filtragem de grúpo FALTA 1
+--Duas consultas com agrupamento, uma com filtragem de grupo 
 -- Verificar quantos produtos estão disponíveis na loja.
 
 	SELECT COUNT(*) AS Disponíveis
 	FROM Produto
 	GROUP BY Status 
-	HAVING Status = ‘Disponível’
+	HAVING Status = 'Disponível'
+
+-- Verificar quantas vendas cada funcionário realizou
+	SELECT V.Funcionario, P.Nome, COUNT(*) AS Vendas
+	FROM (Venda V JOIN Funcionario F ON V.Funcionario = F.CPFPessoa) JOIN Pessoa P ON P.CPF = F.CPFPessoa
+	GROUP BY V.Funcionario, P.Nome
