@@ -1,4 +1,4 @@
--- Criando relação Pessoa
+﻿-- Criando relação Pessoa
 CREATE TABLE Pessoa(
 	cpf VARCHAR(20),
 	nome VARCHAR(100) NOT NULL,
@@ -45,8 +45,7 @@ CREATE TABLE Pessoa(
 	CodDespesa INT NOT NULL,
 	CONSTRAINT PKPagamento PRIMARY KEY(CodPagamento),
 	CONSTRAINT FK1Pagamento FOREIGN KEY(CodDespesa) REFERENCES 	Despesa(CodDespesa),
-	CONSTRAINT FK2Pagamento FOREIGN KEY(Funcionario) REFERENCES Pessoa(CPF),
-	CONSTRAINT ValPositivo CHECK(Valor>0)
+	CONSTRAINT FK2Pagamento FOREIGN KEY(Funcionario) REFERENCES Pessoa(CPF)
 	);
 
 --Criando a relação Fornecedor

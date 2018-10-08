@@ -1,4 +1,4 @@
---Esse gatilho garante que os salários dos funcionários não podem ser atualizados para um valor menor que o atual: 
+﻿--Esse gatilho garante que os salários dos funcionários não podem ser atualizados para um valor menor que o atual: 
 
 CREATE FUNCTION VerificaSalario () RETURNS TRIGGER
 	AS $$
@@ -9,7 +9,7 @@ CREATE FUNCTION VerificaSalario () RETURNS TRIGGER
 		END
 	$$ LANGUAGE PLPGSQL;
 
-CREATE TIGGER VerificaSalarioTrigger BEFORE UPDATE ON Funcionario
+CREATE TRIGGER VerificaSalarioTrigger BEFORE UPDATE ON Funcionario
 	FOR EACH ROW
 	EXECUTE PROCEDURE VerificaSalario();
 
