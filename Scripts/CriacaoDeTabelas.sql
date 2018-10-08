@@ -78,7 +78,7 @@ CREATE TABLE Pessoa(
 	Codigo INT,
 	Tamanho VARCHAR(5) NOT NULL,
 	Status VARCHAR(12) NOT NULL,
-	Nome VARCHAR(20) NOT NULL,
+	Nome VARCHAR(50) NOT NULL,
 	PrecoVenda REAL NOT NULL,
 	CONSTRAINT PKProduto PRIMARY KEY (Codigo),
 	CONSTRAINT PrecoPositivo CHECK(PrecoVenda>0)
@@ -133,14 +133,14 @@ CREATE TABLE Pessoa(
 
 --Criando a relação CartaoCredito
 	CREATE TABLE CartaoCredito(
-	Numero INT,
+	Numero BIGINT,
 	Bandeira VARCHAR(20) NOT NULL,
 	CONSTRAINT PKCartaoCredito PRIMARY KEY(Numero)
 	);
 
 --Criando a relação VendaCartao
 	CREATE TABLE VendaCartao(
-	NumCartao INT,
+	NumCartao BIGINT,
 	CodVenda INT NOT NULL,
 	NumParcelas INT NOT NULL,
 	CONSTRAINT PKVendaCartao PRIMARY KEY(NumCartao),

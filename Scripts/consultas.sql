@@ -1,9 +1,9 @@
---Duas Junções 
+﻿--Duas Junções 
 -- Recuperar e-mail dos clientes atendidos por Milena.
 
 	SELECT C.email
 	FROM Cliente C JOIN Venda V ON C.CPFPessoa = V.Cliente
-	WHERE  V.Funcionario = 'Milena'
+	WHERE  V.Funcionario = '358.947.104-21'
 
 --Recuperar nome dos clientes que usaram cartão da Visa.
 
@@ -12,13 +12,13 @@
 	WHERE CC.Numero = VC.NumCartao AND V.CodVenda = VC.CodVenda AND V.Cliente 	= C.CPFPessoa AND C.CPFPessoa = P.CPF
 
 --Recuperar telefone de todos os fornecedores que venderam acima de 10 produtos para a loja.
-
+(------------------NOT WORKING------------------)
 	SELECT Telefone
 	FROM Compra C JOIN Fornecedor F ON F.CNPJ = C.Fornecedor
 	WHERE C.Quantidade > 10
 
 --Recuperar o nome de clientes que pagaram com cartão em pelo menos duas parcelas.
-
+(------------------NOT WORKING------------------)
 	SELECT C.Nome
 	FROM VendaCartao VC, Venda V, Cliente C
 	WHERE VC.CodVenda = V.CodVenda AND V.Cliente = C.CPFPessoa AND VC.NumParcelas >= 2
@@ -27,10 +27,13 @@
 --Duas comparações com valores nulos 
 
 --Recuperar nome de todos os clientes que ainda não forneceram seu e-mail
+
 	SELECT P.Nome AS NomeCliente
 	FROM Cliente C JOIN Pessoa P ON C.CPFPessoa = P.CPF
 	WHERE C.email IS NOT NULL
---Recuperar funcionários que nunca atenderam nenhuma venda
+
+--Recuperar  o cpf de funcionários que nunca atenderam nenhuma venda
+
 	SELECT F.CPFPessoa
 	FROM Funcionario F LEFT JOIN Venda V ON F.CPFPessoa = V.Funcionario
 	WHERE V.CodVenda IS NULL
@@ -38,19 +41,21 @@
 --Duas buscas por substrings 
 
 -- Recuperar nome de todos os funcionários que começam com a letra T.
-
+(------------------NOT WORKING------------------)
 	SELECT Nome
 	FROM Funcionario
 	WHERE Nome LIKE 'T%'
 
---Recuperar email de clientes que usam o domínio @gmail.com
+--Recuperar email de clientes que usam o domínio @hotmail.com
+
 	SELECT email
 	FROM cliente
-	WHERE email LIKE '%@gmail.com'
+	WHERE email LIKE '%@hotmail.com'
 
 --Duas buscas com ordenação 
 
 -- Recuperar nome e endereço de funcionários que moram na cidade de Cajazeiras.
+
 	SELECT P.Nome, F.Rua, F.Bairro
 	FROM Funcionario F JOIN Pessoa P ON F.CPFPessoa = P.CPF
 	WHERE F.Cidade = 'Cajazeiras'
@@ -58,14 +63,14 @@
 
 -- Verificar quais produtos estão disponíveis na loja.
 	
-	SELECT CodProduto, Nome
+	SELECT codigo, Nome
 	FROM Produto
 	WHERE Status = 'Disponível'
 	ORDER BY Nome
 
 --Recuperar valor de cada produto disponívelse a loja toda declarar desconto de 20%.
 	
-	SELECT Nome, PreçoVenda * 0.80 AS PreçoDesconto
+	SELECT Nome, PrecoVenda * 0.80 AS PreçoDesconto
 	FROM Produto
 	ORDER BY Nome
 
@@ -94,6 +99,7 @@
 --Duas consultas aninhadas correlacionadas 
 
 --Recuperar nome de funcionários que ainda não receberam pagamento
+
 	SELECT P.Nome
 	FROM Pessoa P JOIN Funcionario F ON P.CPF = F.CPFPessoa
 	WHERE NOT EXISTS
@@ -101,6 +107,7 @@
 	 WHERE P.CPF = PA.Funcionario)
 
 --Recuperar email de clientes atendidos por funcionários efetivos
+
 	SELECT c.email
 	FROM Cliente C
 	WHERE EXISTS
@@ -110,6 +117,7 @@
 
 --Duas consultas com operações de conjunto  
 --Recuperar produtos disponíveis tanto em tamanho P quanto em tamanho G
+
 	(SELECT Codigo, Nome
 	FROM Produto
 	WHERE Status = 'Disponível' AND Tamanho = 'P')
@@ -119,10 +127,11 @@
 	WHERE Status = 'Disponível' AND Tamanho = 'G')
 
 --Recuperar código de despesas que não provém de compras
+
 	(SELECT CodDespesa
 	FROM Despesa)
 	EXCEPT
-	(SELECT CodigoDespesa
+	(SELECT CodDespesa
 	FROM Despesa NATURAL JOIN Compra)
 
 
@@ -134,6 +143,7 @@
 	WHERE Data >= '2018-08-11' AND Data <= '2018-08-20'
 
 -- Verificar o prejuízo com despesas entre 2018-07-30 e 2018-08-30
+
 	SELECT SUM(Valor) as Prejuíjo
 	FROM Despesa
 	WHERE Data >= '2018-07-30' AND Data <= '2018-08-30'
@@ -148,6 +158,7 @@
 	HAVING Status = 'Disponível'
 
 -- Verificar quantas vendas cada funcionário realizou
+
 	SELECT V.Funcionario, P.Nome, COUNT(*) AS Vendas
 	FROM (Venda V JOIN Funcionario F ON V.Funcionario = F.CPFPessoa) JOIN Pessoa P ON P.CPF = F.CPFPessoa
 	GROUP BY V.Funcionario, P.Nome

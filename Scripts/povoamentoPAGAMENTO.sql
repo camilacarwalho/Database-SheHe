@@ -1,5 +1,5 @@
---Povoando a relação Pagamento
-INSERT INTO Pagamento VALUES(1, '559.629.014-60', '06:30:35', 1);
+﻿--Povoando a relação Pagamento
+INSERT INTO Pagamento VALUES(1, '559.629.914-60', '06:30:35', 1);
 INSERT INTO Pagamento VALUES(2, '358.947.104-21', '12:30:00', 2);
 INSERT INTO Pagamento VALUES(3, '690.418.134-62', '09:20:05', 3);
 INSERT INTO Pagamento VALUES(4, '146.287.484-38', '17:30:00', 4);

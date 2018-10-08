@@ -1,4 +1,4 @@
---Essa visão auxilia na recuperação do produto mais comprado a fornecedores.
+﻿--Essa visão auxilia na recuperação do produto mais comprado a fornecedores.
 CREATE VIEW pedidosVisao
 AS(
     SELECT P.Nome, COUNT(*) AS Pedidos
@@ -29,9 +29,9 @@ AS(
 --Essa visão auxilia na recuperação do vendedor que atende em mais vendas.
 CREATE VIEW vendedorVisao
 AS(
-    SELECT F.CPFPessoa, P..Nome, COUNT(*) AS Vendas
+    SELECT F.CPFPessoa, P.Nome, COUNT(*) AS Vendas
     FROM Funcionario F, Venda V, Pessoa P
-    WHERE F.CPFPessoa = V.Funcionario AND F.Cargo = ‘Vendedor’ AND F.CPFPessoa = P.CPF
+    WHERE F.CPFPessoa = V.Funcionario AND F.Cargo = 'Vendedor' AND F.CPFPessoa = P.CPF
     GROUP BY F.CPFPessoa, P.Nome
 );
  
