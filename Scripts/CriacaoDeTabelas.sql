@@ -133,14 +133,14 @@ CREATE TABLE Pessoa(
 
 --Criando a relação CartaoCredito
 	CREATE TABLE CartaoCredito(
-	Numero BIGINT,
+	Numero VARCHAR(50),
 	Bandeira VARCHAR(20) NOT NULL,
 	CONSTRAINT PKCartaoCredito PRIMARY KEY(Numero)
 	);
 
 --Criando a relação VendaCartao
 	CREATE TABLE VendaCartao(
-	NumCartao BIGINT,
+	NumCartao VARCHAR(50),
 	CodVenda INT NOT NULL,
 	NumParcelas INT NOT NULL,
 	CONSTRAINT PKVendaCartao PRIMARY KEY(NumCartao),
