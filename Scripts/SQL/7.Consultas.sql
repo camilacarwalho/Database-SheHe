@@ -86,7 +86,7 @@
 	GROUP BY V.Cliente
 	HAVING Count(*)>1)
 
--- Recuperar nome e código de produtos que tiveram pelo menos 4 vendas contabilizadas.
+-- Recuperar nome e código de produtos que tiveram pelo menos 2 vendas contabilizadas.
 
 	SELECT P.Nome, P.Codigo
 	FROM Produto P 
@@ -94,7 +94,7 @@
 	(SELECT VP.CodProduto
 	FROM VendaProduto VP
 	GROUP BY VP.CodProduto
-	HAVING Count(*)>=4 AND VP.CodProduto = P.Codigo)
+	HAVING Count(*)>=2 AND VP.CodProduto = P.Codigo)
 
 
 --Recuperar nome de funcionários que ainda não receberam pagamento
@@ -116,11 +116,11 @@
 
 --Recuperar produtos disponíveis tanto em tamanho P quanto em tamanho G
 
-	(SELECT Codigo, Nome
+	(SELECT Nome
 	FROM Produto
 	WHERE Status = 'Disponível' AND Tamanho = 'P')
 	INTERSECT
-	(SELECT Codigo, Nome
+	(SELECT Nome
 	FROM Produto
 	WHERE Status = 'Disponível' AND Tamanho = 'G')
 

@@ -41,7 +41,7 @@ INSERT INTO Pagamento VALUES(1, '559.629.914-60', '06:30:35', 1);
 INSERT INTO Pagamento VALUES(2, '358.947.104-21', '12:30:00', 2);
 INSERT INTO Pagamento VALUES(3, '690.418.134-62', '09:20:05', 3);
 INSERT INTO Pagamento VALUES(4, '146.287.484-38', '17:30:00', 4);
-INSERT INTO Pagamento VALUES(5, '846.101.944-06', '10:29:00', 5);
+INSERT INTO Pagamento VALUES(5, '559.629.914-60', '10:29:00', 5);
 
 --Povoando a relação Fornecedor
 INSERT INTO Fornecedor VALUES('85.296.634/0001-96', 'Megaduran', '3561-4578', 'Sousa', 'Rua Vitória Alves da Silva', 'Centro');
@@ -59,8 +59,8 @@ INSERT INTO Compra VALUES(4, '59.547.777/0001-13', '08:23:00', 9);
 INSERT INTO Compra VALUES(5, '74.263.193/0001-00', '10:34:00', 10);
 
 --Povoando a relação Produto
-INSERT INTO Produto VALUES(1001234, 'M', 'Disponível', 'Calça Skinny em Sarja', 59.90);
-INSERT INTO Produto VALUES(1001235, 'M', 'Disponível', 'Camisa Branca Mullet', 45.50);
+INSERT INTO Produto VALUES(1001234, 'P', 'Disponível', 'Calça Skinny em Sarja', 59.90);
+INSERT INTO Produto VALUES(1001235, 'G', 'Disponível', 'Calça Skinny em Sarja', 45.50);
 INSERT INTO Produto VALUES(1001236, 'GG', 'Indisponível', 'Camisa Estampada com Folhagem', 38.90);
 INSERT INTO Produto VALUES(1001237, 'G', 'Disponível', 'Camisa Estampada com Amarração', 55.90);
 INSERT INTO Produto VALUES(1001238, 'P', 'Disponível', 'Calça Mom Jeans', 75.90);
@@ -108,7 +108,7 @@ INSERT INTO Venda VALUES(38, '08:10:12', '358.947.104-21', '819.174.014-18', 17)
 --Povoando a relação VendaProduto
 INSERT INTO VendaProduto VALUES(1001253, 33, 1, 70.60);
 INSERT INTO VendaProduto VALUES(1001252, 33, 1, 200.00);
-INSERT INTO VendaProduto VALUES(1001251, 34, 1, 100.00);
+INSERT INTO VendaProduto VALUES(1001253, 34, 1, 100.00);
 INSERT INTO VendaProduto VALUES(1001250, 34, 1, 80.00);
 INSERT INTO VendaProduto VALUES(1001249, 33, 1, 59.90);
 
