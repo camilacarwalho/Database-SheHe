@@ -13,20 +13,19 @@
 
 --Recuperar telefone de todos os fornecedores que venderam acima de 20 produtos para a loja.
 
-					(---not working---) TESTAR
-
-	SELECT F.Telefone
+	SELECT F.CNPJ, F.Telefone
 	FROM (Compra C NATURAL JOIN CompraProduto CP) JOIN Fornecedor F ON C.Fornecedor = F.CNPJ
-	GROUP BY F.CNPJ, F.Telefone
+	GROUP BY F.CNPJ, F.Telefone, CP.Quantidade
 	HAVING CP.Quantidade > 20
 
 --Recuperar o nome de clientes que pagaram com cartão em pelo menos duas parcelas.
 
-			(------------------NOT WORKING------------------)
-
-	SELECT C.Nome
-	FROM (VendaCartao VC NATURAL JOIN Venda V) JOIN Cliente C ON V.Cliente = C.CPFPessoa
-	WHERE VC.NumParcelas >= 2
+	select p.nome 
+	from pessoa p
+	where p.cpf in
+		(select c.cpfpessoa
+		from (VendaCartao VC NATURAL JOIN Venda V) JOIN Cliente C ON V.Cliente = C.CPFPessoa
+		WHERE VC.NumParcelas >= 2)
 
 
 --Recuperar nome de todos os clientes já forneceram seu e-mail
@@ -42,9 +41,11 @@
 	WHERE V.CodVenda IS NULL
 
 
--- Recuperar nome de todos os funcionários que começam com a letra T.
+-- Recuperar nome de todos os funcionários que começam com a letra M.
+
+	SELECT P.Nome
 	FROM Funcionario F JOIN Pessoa P ON F.CPFPessoa = P.CPF
-	WHERE P.Nome LIKE 'T%'
+	WHERE P.Nome LIKE 'M%'
 
 --Recuperar email de clientes que usam o domínio @hotmail.com
 
@@ -67,7 +68,7 @@
 	WHERE Status = 'Disponível'
 	ORDER BY Nome
 
---Recuperar valor de cada produto disponívelse a loja toda declarar desconto de 20%.
+--Recuperar valor de cada produto disponível se a loja toda declarar desconto de 20%.
 	
 	SELECT Nome, PrecoVenda * 0.80 AS PreçoDesconto
 	FROM Produto
