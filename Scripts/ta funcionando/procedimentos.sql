@@ -1,4 +1,4 @@
-	
+﻿	
 -- Esse procedimento armazenado classifica o salário de cada funcionário.
 
 CREATE OR REPLACE FUNCTION ClassificaSalario (VARCHAR(20)) RETURNS VARCHAR
@@ -8,8 +8,8 @@ CREATE OR REPLACE FUNCTION ClassificaSalario (VARCHAR(20)) RETURNS VARCHAR
 			CPFFun ALIAS FOR $1;
 	BEGIN
 			SELECT INTO SalFun SALARIO FROM Funcionario WHERE CPFFunc = CPFPessoa;
-			IF SalFun < 1000 THEN RETURN 'Salário baixo',
-				ELSE IF SalFunc<2000 THEN RETURN 'Salário Médio',	
+			IF SalFun < 1000 THEN RETURN 'Salário baixo';
+				ELSE IF SalFunc<2000 THEN RETURN 'Salário Médio';	
 				ELSE RETURN 'Salário Alto';
 				END IF;
 		END IF;
