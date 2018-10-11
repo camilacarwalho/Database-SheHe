@@ -12,14 +12,18 @@
 	WHERE CC.Numero = VC.NumCartao AND V.CodVenda = VC.CodVenda AND V.Cliente 	= C.CPFPessoa AND C.CPFPessoa = P.CPF
 
 --Recuperar telefone de todos os fornecedores que venderam acima de 10 produtos para a loja.
-------------------NOT WORKING------------------) //Testar de novo
+
+					(---not working---)
+
 	SELECT F.Telefone
 	FROM (Compra C NATURAL JOIN CompraProduto CP) JOIN Fornecedor F ON C.Fornecedor = F.CNPJ
 	GROUP BY F.CNPJ, F.Telefone
 	HAVING COUNT(*)>10
 
 --Recuperar o nome de clientes que pagaram com cartão em pelo menos duas parcelas.
-------------------NOT WORKING------------------) //TESTAR 
+
+			(------------------NOT WORKING------------------) //TESTAR 
+
 	SELECT C.Nome
 	FROM (VendaCartao VC NATURAL JOIN Venda V) JOIN Cliente C ON V.Cliente = C.CPFPessoa
 	WHERE VC.NumParcelas >= 2

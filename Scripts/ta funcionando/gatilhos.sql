@@ -27,4 +27,4 @@ CREATE FUNCTION VerificaFuncionarioNaoEfetivo () RETURNS TRIGGER
 	
 CREATE TRIGGER VerificaFuncionarioNaoEfetivo BEFORE UPDATE ON Funcionario
 	FOR EACH ROW
-	EXECUTE PROCEDURE VerificaFuncionarioNaoEfetivo());	
+	EXECUTE PROCEDURE VerificaFuncionarioNaoEfetivo();	
