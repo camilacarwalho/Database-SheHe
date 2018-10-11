@@ -39,6 +39,6 @@ AS(
 
 CREATE VIEW vendasVisao
 AS(
-    SELECT V.Funcionario, VP.CodProduto, VP.Quantidade
-    FROM Venda V NATURAL JOIN VendaProduto VP
+    SELECT V.Funcionario, VP.CodProduto, VP.Quantidade, E.Valor
+    FROM (Venda V NATURAL JOIN VendaProduto VP) NATURAL JOIN Entrada E
  );

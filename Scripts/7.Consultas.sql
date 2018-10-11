@@ -1,4 +1,4 @@
-﻿--Duas Junções 
+﻿
 -- Recuperar e-mail dos clientes atendidos por Milena.
 
 	SELECT C.email
@@ -29,8 +29,6 @@
 	WHERE VC.NumParcelas >= 2
 
 
---Duas comparações com valores nulos 
-
 --Recuperar nome de todos os clientes já forneceram seu e-mail
 
 	SELECT P.Nome AS NomeCliente
@@ -43,7 +41,6 @@
 	FROM Funcionario F LEFT JOIN Venda V ON F.CPFPessoa = V.Funcionario
 	WHERE V.CodVenda IS NULL
 
---Duas buscas por substrings 
 
 -- Recuperar nome de todos os funcionários que começam com a letra T.
 	FROM Funcionario F JOIN Pessoa P ON F.CPFPessoa = P.CPF
@@ -55,7 +52,6 @@
 	FROM cliente
 	WHERE email LIKE '%@hotmail.com'
 
---Duas buscas com ordenação 
 
 -- Recuperar nome e endereço de funcionários que moram na cidade de Cajazeiras.
 
@@ -77,7 +73,7 @@
 	FROM Produto
 	ORDER BY Nome
 
---Duas consultas aninhadas 
+
 -- Recuperar e-mail e nome de todos os clientes que fizeram mais de uma compra.
 
 	SELECT C.email, P.Nome
@@ -99,7 +95,6 @@
 	GROUP BY VP.CodProduto
 	HAVING Count(*)>=4 AND VP.CodProduto = P.Codigo)
 
---Duas consultas aninhadas correlacionadas 
 
 --Recuperar nome de funcionários que ainda não receberam pagamento
 
@@ -118,7 +113,6 @@
 	 FROM Venda V JOIN Funcionario F ON V.Funcionario = F.CPFPessoa
 	 WHERE F.Status = 'Efetivo')
 
---Duas consultas com operações de conjunto  
 --Recuperar produtos disponíveis tanto em tamanho P quanto em tamanho G
 
 	(SELECT Codigo, Nome
@@ -138,7 +132,6 @@
 	FROM Despesa NATURAL JOIN Compra)
 
 
---Duas consultas com funções agregadas 
 -- Verificar o lucro de vendas entre 2018-08-11 até 2018-08-20.
 
 	SELECT SUM(Valor) as Lucro
@@ -152,7 +145,6 @@
 	WHERE Data >= '2018-07-30' AND Data <= '2018-08-30'
 
 
---Duas consultas com agrupamento, uma com filtragem de grupo 
 -- Verificar quantos produtos estão disponíveis na loja.
 
 	SELECT COUNT(*) AS Disponíveis
