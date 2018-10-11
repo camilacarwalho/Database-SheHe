@@ -11,18 +11,18 @@
 	FROM CartaoCredito CC, VendaCartao VC, Venda V, Cliente C, Pessoa P
 	WHERE CC.Numero = VC.NumCartao AND V.CodVenda = VC.CodVenda AND V.Cliente 	= C.CPFPessoa AND C.CPFPessoa = P.CPF
 
---Recuperar telefone de todos os fornecedores que venderam acima de 10 produtos para a loja.
+--Recuperar telefone de todos os fornecedores que venderam acima de 20 produtos para a loja.
 
-					(---not working---)
+					(---not working---) TESTAR
 
 	SELECT F.Telefone
 	FROM (Compra C NATURAL JOIN CompraProduto CP) JOIN Fornecedor F ON C.Fornecedor = F.CNPJ
 	GROUP BY F.CNPJ, F.Telefone
-	HAVING COUNT(*)>10
+	HAVING CP.Quantidade > 20
 
 --Recuperar o nome de clientes que pagaram com cartão em pelo menos duas parcelas.
 
-			(------------------NOT WORKING------------------) //TESTAR 
+			(------------------NOT WORKING------------------)
 
 	SELECT C.Nome
 	FROM (VendaCartao VC NATURAL JOIN Venda V) JOIN Cliente C ON V.Cliente = C.CPFPessoa
@@ -31,7 +31,7 @@
 
 --Duas comparações com valores nulos 
 
---Recuperar nome de todos os clientes que ainda não forneceram seu e-mail
+--Recuperar nome de todos os clientes já forneceram seu e-mail
 
 	SELECT P.Nome AS NomeCliente
 	FROM Cliente C JOIN Pessoa P ON C.CPFPessoa = P.CPF
@@ -46,8 +46,6 @@
 --Duas buscas por substrings 
 
 -- Recuperar nome de todos os funcionários que começam com a letra T.
-------------------NOT WORKING------------------) //TESTAR
-	SELECT P.Nome
 	FROM Funcionario F JOIN Pessoa P ON F.CPFPessoa = P.CPF
 	WHERE P.Nome LIKE 'T%'
 
