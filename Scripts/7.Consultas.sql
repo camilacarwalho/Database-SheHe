@@ -22,7 +22,7 @@
 
 --Recuperar o nome de clientes que pagaram com cartão em pelo menos duas parcelas.
 
-			(------------------NOT WORKING------------------) ver qual o erro
+			(------------------NOT WORKING------------------)
 
 	SELECT C.Nome
 	FROM (VendaCartao VC NATURAL JOIN Venda V) JOIN Cliente C ON V.Cliente = C.CPFPessoa
